@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace mswco\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
+use Illuminate\Foundation\Testing\TestCase;
+use Illuminate\Http\Request;
 
 class ConfirmPasswordController extends Controller
 {
@@ -37,4 +39,7 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    
 }

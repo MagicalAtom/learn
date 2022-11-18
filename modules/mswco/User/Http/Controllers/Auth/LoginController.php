@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace mswco\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -39,9 +39,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
-protected function credentials(Request $request)
+public function showLoginForm()
 {
+    return view('User::auth.login');
 }
 
 }

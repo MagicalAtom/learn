@@ -1,4 +1,5 @@
-@extends('auth.layout.master')
+@extends('User::auth.layout.master')
+
 
 
 @section('title','تایید ایمیل')

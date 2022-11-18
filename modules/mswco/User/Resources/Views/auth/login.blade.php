@@ -1,5 +1,4 @@
-@extends('auth.layout.master')
-
+@extends('User::auth.layout.master')
 
 
 @section('title','صفحه ورود')

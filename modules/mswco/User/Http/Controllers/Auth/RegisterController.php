@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace mswco\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use App\Rules\MobileRule;
-use App\Rules\PasswordRule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use mswco\User\Models\User;
+use mswco\User\Rules\MobileRule;
+use mswco\User\Rules\PasswordRule;
 
 class RegisterController extends Controller
 {
@@ -49,6 +49,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    public function showRegistrationForm()
+    {
+        return view('User::auth.register');
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -63,7 +68,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \mswco\User\Models\User
      */
     protected function create(array $data)
     {

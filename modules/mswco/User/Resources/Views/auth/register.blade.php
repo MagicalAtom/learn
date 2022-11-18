@@ -1,4 +1,4 @@
-@extends('auth.layout.master')
+@extends('User::auth.layout.master')
 
 
 @section('title','صفحه ثبت نام')
@@ -34,7 +34,7 @@
                 >
                 @error('phone_number')
                 <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
+                                                        <strong>{!! $message !!}</strong>
                                                     </span>
                 @enderror
                 <input type="text" class="txt txt-l @error('password') is-invalid @enderror" placeholder="رمز عبور" name="password" required autocomplete="new-password">

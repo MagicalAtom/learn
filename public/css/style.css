@@ -3674,3 +3674,12 @@ textarea {
  } .mrt-170{
      margin-top:170px;
  }
+   .invalid-feedback {
+    color: orangered;
+    size: 9px;
+    font-family: "Leelawadee UI";
+
+   }
+   .is-invalid {
+       border: 2px dashed darkred;
+   }

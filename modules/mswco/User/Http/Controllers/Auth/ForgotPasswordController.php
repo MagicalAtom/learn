@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace mswco\User\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
@@ -19,4 +19,8 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+    public function showLinkRequestForm()
+    {
+        return view('User::auth.passwords.email');
+    }
 }

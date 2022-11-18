@@ -16,7 +16,6 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -82,14 +81,14 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'fa',
 
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
     |--------------------------------------------------------------------------
     |
-    | The fallback locale determines the locale to use when the current one
+    | The fallback locale determines tjhe locale to use when the current one
     | is not available. You may change the value to correspond to any of
     | the language folders that are provided through your application.
     |
@@ -181,6 +180,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        \mswco\User\Providers\UserServiceProvider::class,
 
         /*
          * Package Service Providers...
