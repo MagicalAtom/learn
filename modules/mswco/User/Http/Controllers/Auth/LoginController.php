@@ -44,4 +44,28 @@ public function showLoginForm()
     return view('User::auth.login');
 }
 
+protected function credentials(Request $request)
+{
+    $username = $request->get($this->username());
+
+    if(preg_match("/^9[0-9]{9}$/", $username)) {
+        $field = "phone_number";
+        return [
+            $field => $username,
+            'password' => $request->password,
+        ];
+    }elseif(preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$username))
+    {
+        $field = "email";
+
+        return [
+            $field => $username,
+            'password' => $request->password,
+        ];
+    }else{
+       die();
+    }
+}
+
+
 }

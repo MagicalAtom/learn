@@ -13,7 +13,7 @@ class RegisterTest extends TestCase
 use  RefreshDatabase;
 
     public function test_user_can_see_register_form(){
-        $response = $this->get('/register');  // باز کردن این صفحه
+        $response = $this->get(route('register'));  // باز کردن این صفحه
 
         $response->assertStatus(200); // اگه باز شد و کد اچ تی تی پی موفقیت آمیز دریافت کرد
     }

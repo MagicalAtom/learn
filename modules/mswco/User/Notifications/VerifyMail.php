@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Notifications;
+namespace mswco\User\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use mswco\User\Mail\VerifyCodeMail;
 
 class VerifyMail extends Notification
 {
@@ -40,10 +40,14 @@ class VerifyMail extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+
+        $code = random_int(100000,999999);
+        cache()->set('verify_key_' . $notifiable->id,$code,now()->addSecond(20));
+
+                return (new VerifyCodeMail($code))
+                    ->to($notifiable->email)
+                    ->subject('کد فعالسازی شما : ');
+
     }
 
     /**

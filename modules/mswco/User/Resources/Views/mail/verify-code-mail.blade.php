@@ -1,12 +1,11 @@
 <x-mail::message>
-# Introduction
+کد فعالسازی حساب شما
 
-The body of your message.
+اگر چنانچه این درخواست از سمت شما نبوده آن را نادیده بگیرید .
+<x-mail::panel>
+Code : {{ $code }}
+</x-mail::panel>
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
-
-Thanks,<br>
+با تشکر<br>
 {{ config('app.name') }}
 </x-mail::message>

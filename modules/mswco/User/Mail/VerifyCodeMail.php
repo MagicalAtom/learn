@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Mail;
+namespace mswco\User\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -12,15 +11,16 @@ use Illuminate\Queue\SerializesModels;
 class VerifyCodeMail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $code;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($code)
     {
-        //
+        $this->code = $code;
     }
 
     /**
@@ -43,7 +43,7 @@ class VerifyCodeMail extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'mail.verify-code-mail',
+            markdown: 'User::mail.verify-code-mail',
         );
     }
 
