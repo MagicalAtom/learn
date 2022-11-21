@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
+use mswco\User\Services\VerifyCodeServices;
 
 class VerificationController extends Controller
 {
@@ -37,7 +38,6 @@ class VerificationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 
@@ -47,5 +47,17 @@ class VerificationController extends Controller
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : view('User::auth.verify');
+    }
+
+
+    public function verify(Request $request)
+    {
+        $this->validate($request,[
+           'verify_code' => 'required|numeric|min:6'
+        ]);
+        $code = VerifyCodeServices::get(auth()->id());
+
+        dd($code);
+
     }
 }

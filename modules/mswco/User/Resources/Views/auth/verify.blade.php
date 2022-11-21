@@ -1,37 +1,53 @@
+
 @extends('User::auth.layout.master')
-
-
-
-@section('title','تایید ایمیل')
-
+@section('title','کد فعالسازی حساب کاربری')
 @section('content')
-
-
-    <div class="account">
-        <form method="POST" action="{{ route('verification.resend') }}" class="form">
+    <div class="account act">
+        <form action="{{  route('verification.verify')  }}" class="form" method="post">
             @csrf
-            <a class="account-logo" href="index.html">
-                <img src="{{asset("img/weblogo.png")}}" alt="">
+            <a class="account-logo" href="/">
+                <img src="/img/weblogo.png" alt="">
             </a>
-            <div class="form-content form-account">
-                                        @if (session('resent'))
-                                            <div class="alert alert-success" role="alert">
-                                                <font color="#1e90ff">لینک تایید ایمیل جدید با موفقیت ارسال شد</font>
-                                            </div>
-                                        @endif
+            <div class="card-header">
+                @if (session('resent'))
+                    <div class="alert alert-success" role="alert" style="text-align: center">
+                        <font color="#1e90ff">لینک تایید ایمیل جدید با موفقیت ارسال شد</font>
+                    </div>
+                @endif
                 <br>
-                <button class="btn btn--login" type="submit">ارسال مجدد</button>
-                         لینک تایید ایمیل با موفقیت برای شما ارسال شد .
-                <br><br>
-             <font color="#ff4500" >  اگر چنانچه موفق به دریافت لینک نشده پس از بررسی بخش spam ایمیل مجدد بر روی دکمه (ارسال مجدد) کلیک کنید</font>
+                <p class="activation-code-title">کد فرستاده شده به ایمیل  <span>{{ auth()->user()->email }}</span>
+                    را وارد کنید . ممکن است ایمیل به پوشه spam فرستاده شده باشد.
+                    ایمیلتان را اشتباه وارد کرده اید؟ <a href=""> برای ویرایش ایمیل کلیک کنید</a>.
+                </p>
+            </div>
+            <div class="form-content form-content1">
+                <input name="verify_code" required class="activation-code-input" placeholder="فعال سازی">
+                @error('verify_code')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+                <br>
+                <button class="btn i-t">تایید</button>
+                <a href="#" onclick="
+                event.preventDefault();
+                document.getElementById('resend-code').submit()
+                ">ارسال مجدد کد فعالسازی</a>
+
             </div>
             <div class="form-footer">
-                <a href="{{ route('home') }}">صفحه اصلی</a>
+                <a href="{{ route('register') }}">صفحه ثبت نام</a>
             </div>
         </form>
+
+        <form id="resend-code" action="{{ route('verification.resend') }}" method="post">
+            @csrf
+        </form>
     </div>
+@endsection
 
-
-
+@section('js')
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/activation-code.js"></script>
 @endsection
 

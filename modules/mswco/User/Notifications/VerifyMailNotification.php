@@ -7,8 +7,9 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use mswco\User\Mail\VerifyCodeMail;
 use mswco\User\Services\CodeGenerateService;
+use mswco\User\Services\VerifyCodeServices;
 
-class VerifyMail extends Notification
+class VerifyMailNotification extends Notification
 {
     use Queueable;
 
@@ -43,6 +44,10 @@ class VerifyMail extends Notification
     {
 
         $code = CodeGenerateService::generate();
+        VerifyCodeServices::store($code,$notifiable->id);
+
+
+
 
                 return (new VerifyCodeMail($code))
                     ->to($notifiable->email)
