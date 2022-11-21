@@ -22,6 +22,7 @@
             </div>
             <div class="form-content form-content1">
                 <input name="verify_code" required class="activation-code-input" placeholder="فعال سازی">
+
                 @error('verify_code')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

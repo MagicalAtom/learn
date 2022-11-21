@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
+use mswco\User\Requests\VerifyCodeRequest;
 use mswco\User\Services\VerifyCodeServices;
 
 class VerificationController extends Controller
@@ -50,14 +51,12 @@ class VerificationController extends Controller
     }
 
 
-    public function verify(Request $request)
+    public function verify(VerifyCodeRequest $request)
     {
-        $this->validate($request,[
-           'verify_code' => 'required|numeric|min:6'
-        ]);
-        $code = VerifyCodeServices::get(auth()->id());
-
-        dd($code);
-
+            if (VerifyCodeServices::check(auth()->id(),$request->verify_code)){
+                auth()->user()->markEmailAsVerified();
+                return redirect()->to(route('home'));
+            }
+        return back()->withErrors(['verify_code'=>'کد وارد شده معتبر نمیباشد']);
     }
 }
