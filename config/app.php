@@ -181,6 +181,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         \mswco\User\Providers\UserServiceProvider::class,
+        \mswco\Dashboard\Providers\DashboardServiceProvider::class,
+        \mswco\Category\Providers\CategoryServiceProvider::class,
 
         /*
          * Package Service Providers...

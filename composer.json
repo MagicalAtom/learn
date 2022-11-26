@@ -27,7 +27,9 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "mswco\\User\\": "modules/mswco/User"
+            "mswco\\User\\": "modules/mswco/User",
+            "mswco\\Dashboard\\": "modules/mswco/Dashboard",
+            "mswco\\Category\\": "modules/mswco/Category"
         }
     },
     "autoload-dev": {
