@@ -9,6 +9,12 @@ Route::get('/test',function (){
     return new \mswco\User\Mail\VerifyCodeMail();
 });
 
+
+
+Route::get('/',function (){
+return abort(200);
+});
+
 //Route::get('/verify-link/{user_id}',function (){
 //
 //if (request()->hasValidSignature()){
@@ -26,3 +32,8 @@ Route::get('/test',function (){
 //    dd($dd);
 //
 //});
+Route::get('/test',function (){
+//\Spatie\Permission\Models\Permission::create(['name'=>'manage role_permissions']);
+auth()->user()->givePermissionTo('manage role_permissions');
+return auth()->user()->permission;
+});

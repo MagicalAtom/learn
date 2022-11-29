@@ -10,7 +10,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "laravel/ui": "^4.0"
+        "laravel/ui": "^4.0",
+        "spatie/laravel-permission": "^5.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -29,7 +30,8 @@
             "Database\\Seeders\\": "database/seeders/",
             "mswco\\User\\": "modules/mswco/User",
             "mswco\\Dashboard\\": "modules/mswco/Dashboard",
-            "mswco\\Category\\": "modules/mswco/Category"
+            "mswco\\Category\\": "modules/mswco/Category",
+            "mswco\\Role\\": "modules/mswco/Role"
         }
     },
     "autoload-dev": {

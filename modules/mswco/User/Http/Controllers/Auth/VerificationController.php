@@ -54,7 +54,7 @@ class VerificationController extends Controller
     public function verify(VerifyCodeRequest $request)
     {
             if (VerifyCodeServices::check(auth()->id(),$request->verify_code)){
-                auth()->user()->markEmailAsVerified();
+                auth()->user()->markEmailAsVerified(); // تایید ایمیل
                 return redirect()->to(route('home'));
             }
         return back()->withErrors(['verify_code'=>'کد وارد شده معتبر نمیباشد']);
