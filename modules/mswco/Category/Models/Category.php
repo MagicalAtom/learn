@@ -21,6 +21,9 @@ public function parentCategory(){
         return $this->hasMany(Category::class,'parent_id');
     }
 
+        public static function category($id){
+        return self::query()->find($id)->name;
+        }
 
 
 }

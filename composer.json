@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
@@ -31,7 +32,8 @@
             "mswco\\User\\": "modules/mswco/User",
             "mswco\\Dashboard\\": "modules/mswco/Dashboard",
             "mswco\\Category\\": "modules/mswco/Category",
-            "mswco\\Role\\": "modules/mswco/Role"
+            "mswco\\Courses\\": "modules/mswco/Courses",
+            "mswco\\Media\\": "modules/mswco/Media"
         }
     },
     "autoload-dev": {

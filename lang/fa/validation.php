@@ -155,6 +155,14 @@ return [
     |
     */
     'attributes' => [
+        "teacher_id" => 'مدرس',
+        "attachment" => 'تصویر',
+        "price" => 'مبلغ',
+        "percent" => 'درصد مدرس',
+        "priority" => 'ردیف دوره',
+        "type" => 'نوع',
+        "status" => 'وضعیت دوره',
+        "category_id" => 'دسته بندی دوره',
         "name" => "نام",
         "username" => "نام کاربری",
         "email" => "پست الکترونیکی",

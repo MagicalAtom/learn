@@ -12,4 +12,12 @@ public function findByEmail($email){
     return $user;
 }
 
+
+public function getTeacher(){
+    $teacher = User::query()->where('beteach','yes')->get();
+    return $teacher;
+}
+
+
+
 }

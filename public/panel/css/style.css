@@ -154,6 +154,7 @@ textarea {
 }
 .border-top {
     border-top: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
 }
 
 .border-right {
@@ -632,7 +633,9 @@ textarea {
 .sidebar__nav .i-ads a::before {
     content: "\E00b";
 }
-
+.sidebar__nav .i-role-permissions a::before {
+    content: "\E084";
+}
 
 .sidebar__nav .i-banners a::before {
     content: "\E05e";
@@ -667,9 +670,6 @@ textarea {
 
 .sidebar__nav .i-checkout__request a::before {
     content: "\E032";
-}
-.sidebar__nav .i-role-permissions a::before {
-    content: "\e084";
 }
 
 .sidebar__nav .i-my__purchases a::before {
@@ -921,7 +921,28 @@ textarea {
     max-height: 300px;
     overflow-x: hidden;
     text-align: center;
+    width: 100%;
 }
+.dropdown__notification .content__notification ul {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.dropdown__notification .content__notification ul li{
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    border-bottom: 0.5px solid #333;
+}
+.dropdown__notification .content__notification ul li:last-child{
+    border-bottom: none;
+}
+
+.dropdown__notification .content__notification ul li:first-child{
+    margin-top: 0;
+}
+
 
 .w-100-10 {
     width: calc(100% + 10px);
@@ -1420,8 +1441,6 @@ span.tagRemove:hover {
     color: #fff !important;
 }
 .ui-checkbox {
-    padding-right: 35px;
-    padding-bottom: 8px;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -1436,7 +1455,6 @@ span.tagRemove:hover {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding-right: 40px;
 }
 
 .ui-checkbox input {
@@ -1878,4 +1896,35 @@ span.tagRemove:hover {
 }
 .notification__box .title__noti{
     padding: 15px 0;
+}
+.pt-1{
+    padding-top: 10px;
+}
+.pr-3{
+    padding-right: 30px;
+}
+.mt-0{
+    margin-top: 0 !important;
+}
+.mt-2{
+    margin-top: 20px;
+}
+
+.mb-0{
+    margin-bottom: 0 !important;
+}
+
+.invalid-feedback{
+    color: red;
+}
+.w-100{
+    width: 100% !important;
+}
+
+.multi-text{
+    margin-bottom: 15px;
+}
+
+.deleteable-list-item:hover .item-delete{
+    display: inline-block;
 }

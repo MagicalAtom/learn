@@ -196,8 +196,8 @@ return [
         \mswco\User\Providers\UserServiceProvider::class,
         \mswco\Dashboard\Providers\DashboardServiceProvider::class,
         \mswco\Category\Providers\CategoryServiceProvider::class,
-        \mswco\Role\Providers\RoleServiceProvider::class,
-
+        \mswco\Courses\Providers\CoursesServiceProvider::class,
+        \mswco\Media\Providers\MediaSeriveceProvider::class
     ],
 
     /*
