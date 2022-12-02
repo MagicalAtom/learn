@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('beteach',['yes','no'])->default('no');
+            $table->enum('beteach',['yes','no']);
             $table->rememberToken();
             $table->timestamps();
         });

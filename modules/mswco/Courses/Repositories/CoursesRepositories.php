@@ -60,4 +60,20 @@ class CoursesRepositories
             }
 
 
+            public function Confirm($course){
+            $course::query()->update(['confirm'=>'accepted']);
+            }
+
+
+        public function Reject($course){
+                $course::query()->update(['confirm'=>'rejected']);
+        }
+    public function Lock($course){
+        $course::query()->update(['status'=>'lock']);
+    }
+
+
+
+
+
 }

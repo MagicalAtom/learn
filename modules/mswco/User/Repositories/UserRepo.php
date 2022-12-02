@@ -18,6 +18,25 @@ public function getTeacher(){
     return $teacher;
 }
 
+public function all(){
+    return User::query()->paginate(10);
+}
+
+public function delete($user){
+    $user::query()->delete();
+}
+
+
+public function add($user){
+
+}
+
+
+    public function del($user){
+        return $user::query()->update(['beteach','no']);
+    }
+
+
 
 
 }

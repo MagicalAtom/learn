@@ -15,9 +15,9 @@
 <form action="{{ route('courses.update',$find->id)  }}" class="padding-30" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-    <input type="text" value="{{ $find->title }}" class="text" name="title" required placeholder="عنوان دوره">
+    <input type="text" value="{{ $find->title }}" class="text" name="title"  placeholder="عنوان دوره">
     <x-error-component field="title"></x-error-component>
-    <input type="text" class="text text-left " value="{{ $find->slug }}" name="slug" required placeholder="نام انگلیسی دوره">
+    <input type="text" class="text text-left " value="{{ $find->slug }}" name="slug"  placeholder="نام انگلیسی دوره">
     <x-error-component field="slug"></x-error-component>
 
     <div class="d-flex multi-text">
@@ -25,11 +25,11 @@
         <x-error-component field="priority"></x-error-component>
 
 
-        <input type="text" placeholder="مبلغ دوره" class="text-left text mlg-15" value="{{ $find->price }}" name="price" required>
+        <input type="text" placeholder="مبلغ دوره" class="text-left text mlg-15" value="{{ $find->price }}" name="price" >
         <x-error-component field="price"></x-error-component>
 
 
-        <input type="text" placeholder="درصد مدرس" class="text-left text" name="percent" required value="{{ $find->percent }}">
+        <input type="text" placeholder="درصد مدرس" class="text-left text" name="percent"  value="{{ $find->percent }}">
         <x-error-component field="percent"></x-error-component>
 
     </div>
@@ -56,17 +56,30 @@
             <input type="text" id="search-field">
         </li>
     </ul>
-    <p style="color: #1c8ecf; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; margin-bottom: 8px"">{{ "نوع فعلی دوره : " . $find->type }}</p>
-    <select name="type" required>
+    <p style="color: #1c8ecf; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; margin-bottom: 8px">{{ "نوع فعلی دوره : " }}
+    @if($find->type == 'free')
+        {{ "رایگان" }}
+
+        @elseif($find->type == 'cash')
+        {{ "غیر رایگان" }}
+    @endif
+    </p>
+    <select name="type">
         <option value="">نوع دوره</option>
         <option value="1">نقدی</option>
         <option value="2">رایگان</option>
     </select>
     <x-error-component field="type"></x-error-component>
 <p style="color: #1c8ecf; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; margin-bottom: 8px"">
-    {{ "وضعیت فعلی دوره : " . $find->status }}
+    {{ "وضعیت فعلی دوره : "  }}  @if($find->status == 'lock')
+{{ "قفل شده" }}
+    @elseif($find->status == 'completed')
+                                     {{"تکمیل شده" }}
+    @else
+                                     {{ "تکمیل نشده" }}
+    @endif
     </p>
-    <select name="status" required>
+    <select name="status" >
         <option value="">وضعیت دوره</option>
         <option value="not-completed">درحال برگزاری</option>
         <option value="completed">تکمیل</option>
@@ -77,7 +90,7 @@
     <p style="color: #1c8ecf; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; margin-bottom: 8px"">
         {{ "دسته بندی دوره : " . \mswco\Category\Models\Category::category($find->category_id) }}
     </p>
-    <select name="category_id" required>
+    <select name="category_id" >
         <option value="0">دسته بندی </option>
     @foreach($Category as $cat)
         <option value="{{ $cat->id }}">{{  $cat->name  }}</option>

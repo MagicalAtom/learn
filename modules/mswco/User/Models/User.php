@@ -9,11 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use mswco\User\Notifications\VerifyMailNotification;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable , HasRoles;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -49,5 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
     $this->notify(new VerifyMailNotification());
+    }
+
+
+    public static function UserTeacher($id)
+    {
+$teacher = User::find($id)->beteach;
+
+return $teacher;
+
     }
 }

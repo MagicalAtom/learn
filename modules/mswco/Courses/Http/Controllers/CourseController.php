@@ -4,6 +4,7 @@ namespace mswco\Courses\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use mswco\Category\Repositories\CategoryRepository;
@@ -71,6 +72,7 @@ class CourseController extends Controller
         }else{
             resolve(CoursesRepositories::class)->update($request,$course,$image);
         }
+        return redirect()->to(route('courses.index'))->with('status','update');
     }
 
     public function destroy(Course $course)
@@ -79,4 +81,25 @@ class CourseController extends Controller
     ImageUploadService::delete($courseitem);
     $course->delete();
     }
+    public function accept(Course $course){
+
+        $course = resolve(CoursesRepositories::class)->Confirm($course);
+        return response()->json(['message'=>'با موفقیت انجام شد'],Response::HTTP_OK);
+    }
+
+
+    public function reject(Course $course){
+
+    $course = resolve(CoursesRepositories::class)->Reject($course);
+        return response()->json(['message'=>'با موفقیت انجام شد'],Response::HTTP_OK);
+
+        {  }
+
+}
+public function lock(Course $course){
+        $course = resolve(CoursesRepositories::class)->Lock($course);
+    return response()->json(['message'=>'با موفقیت انجام شد'],Response::HTTP_OK);
+
+}
+
 }
