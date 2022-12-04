@@ -13,7 +13,7 @@ class ImageUploadService
         $add = md5(uniqid() . time());
         $ext = $value->getClientOriginalExtension();
         $dir = 'app\public';
-        $value->move(storage_path($dir),$add .  "."  . $ext);
+        $value->move(storage_path($dir), $add .  "."  . $ext);
          $path = $dir . "\\" . $add . "\\" . "." .  $ext;
     return $add . "." . $ext;
     }

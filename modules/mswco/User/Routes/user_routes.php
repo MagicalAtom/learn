@@ -8,6 +8,19 @@ Route::group(['namespace'=>'mswco\User\Http\Controllers', 'middleware'=>'web'],f
         ->name('users.change');
     $router->patch('user/{id}/del',[\mswco\User\Http\Controllers\ManageUsersController::class,'del'])
         ->name('users.del');
+
+    $router->patch('user/{id}/ban',[\mswco\User\Http\Controllers\ManageUsersController::class,'ban'])
+        ->name('users.ban');
+    $router->patch('user/{id}/unban',[\mswco\User\Http\Controllers\ManageUsersController::class,'unban'])
+        ->name('users.unban');
+
+    $router->post('users/photo',[\mswco\User\Http\Controllers\ManageUsersController::class,'UpdatePhoto'])
+        ->name('users.update.profile');
+
+    $router->get('/edit/profile',[\mswco\User\Http\Controllers\UserController::class,'index']);
+
+    $router->patch('/user/{id}/update',[\mswco\User\Http\Controllers\UserController::class,'update'])->name('user.update.profile.one');
+
     $router->delete('user/{id}/delete',[\mswco\User\Http\Controllers\ManageUsersController::class,'delete'])
         ->name('users.delete');
     Route::post('/verify/email',[\mswco\User\Http\Controllers\Auth\VerificationController::class,'verify'])

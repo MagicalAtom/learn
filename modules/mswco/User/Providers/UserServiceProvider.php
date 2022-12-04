@@ -3,6 +3,7 @@
 namespace mswco\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use mswco\User\MiddleWares\IpStoreMiddleware;
 
 
 class UserServiceProvider extends ServiceProvider
@@ -21,6 +22,7 @@ config()->set('auth.providers.users.model',\mswco\User\Models\User::class);
         $this->loadMigrationsFrom(__DIR__ . "/../DataBase/Migrations");
         $this->loadViewsFrom(__DIR__ . "/../Resources/Views",'User');
         $this->loadFactoriesFrom(__DIR__ . "/../DataBase/Factory");
+        $this->app['router']->pushMiddlewareToGroup('web',IpStoreMiddleware::class);
         config()->set('sidebar.items.users', [
             "icon" => "i-users",
             "title" => "مدیریت کاربران",
