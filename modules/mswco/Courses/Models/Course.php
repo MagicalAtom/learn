@@ -13,4 +13,9 @@ public static function teacher($id){
         return User::find($id)->name;
 }
 
+
+public function seasons(){
+    return $this->hasMany(Season::class);
+}
+
 }

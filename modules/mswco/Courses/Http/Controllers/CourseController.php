@@ -102,4 +102,8 @@ public function lock(Course $course){
 
 }
 
+public function details(Course $course){
+        return view('Courses::detail',compact('course'));
+}
+
 }

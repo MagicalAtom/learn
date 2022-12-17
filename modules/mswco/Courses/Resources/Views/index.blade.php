@@ -16,6 +16,7 @@
                             <th>شناسه</th>
                             <th>عنوان</th>
                             <th>نوع دوره</th>
+                            <th>جزئیات</th>
                             <th>مدرس</th>
                             <th>وضعیت</th>
                             <th>دسته بندی</th>
@@ -33,6 +34,7 @@
                             <td><a href="">{{ $course->id }}</a></td>
                             <td><a href="">{{ $course->title }}</a></td>
                             <td>@if($course->type == 'free') رایگان  @elseif($course->type == 'cash') پولی @endif</td>
+                            <td><a href="{{ route('courses.details',$course->id)  }}">مشاهده</a> </td>
                             <td><a href="">{{ \mswco\Courses\Models\Course::teacher($course->teacher_id) }}</a></td>
                             <td>@if($course->status == 'completed') کامل شده @elseif($course->status == 'not-completed') کامل نشده @else قفل @endif</td>
                             <td><a href="">{{ \mswco\Category\Models\Category::category($course->category_id)}}</a></td>

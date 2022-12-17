@@ -9,6 +9,7 @@ class CoursesServiceProvider extends ServiceProvider
 public function register()
 {
     $this->loadRoutesFrom(__DIR__ . "/../Routes/courses_route.php");
+    $this->loadRoutesFrom(__DIR__ . "/../Routes/seasons_route.php");
     $this->loadViewsFrom(__DIR__  . "/../Resources/Views" , "Courses");
     $this->loadMigrationsFrom(__DIR__ . "/../DataBase/Migrations");
 }

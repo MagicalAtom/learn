@@ -15,5 +15,7 @@ Route::group(
         ->name('courses.reject');
     $router->patch('lock/{course}/lock',[\mswco\Courses\Http\Controllers\CourseController::class,'lock'])
         ->name('courses.lock');
+    $router->get('/course/{course}/detail',[\mswco\Courses\Http\Controllers\CourseController::class,'details'])->name('courses.details');
+
     });
 //Route::view('/route','Courses::create');
