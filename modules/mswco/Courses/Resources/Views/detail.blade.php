@@ -9,7 +9,7 @@
             <div class="col-8 bg-white padding-30 margin-left-10 margin-bottom-15 border-radius-3">
                 <div class="margin-bottom-20 flex-wrap font-size-14 d-flex bg-white padding-0">
                     <p class="mlg-15">دوره مقدماتی تا پیشرفته لاراول</p>
-                    <a class="color-2b4a83" href="lesson-upload.html">آپلود جلسه جدید</a>
+                    <a class="color-2b4a83" href="{{ route('lesson.create',$course->id)  }}">آپلود جلسه جدید</a>
                 </div>
                 <div class="d-flex item-center flex-wrap margin-bottom-15 operations__btns">
                     <button class="btn all-confirm-btn">تایید همه جلسات</button>
@@ -29,6 +29,7 @@
                                 </label>
                             </th>
                             <th>شناسه</th>
+                            <th>شماره</th>
                             <th>عنوان جلسه</th>
                             <th>عنوان فصل</th>
                             <th>مدت زمان جلسه</th>
@@ -38,6 +39,8 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($course->lessons as $lesson)
+
                         <tr role="row" class="" data-row-id="1">
                             <td>
                                 <label class="ui-checkbox">
@@ -45,12 +48,23 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </td>
-                            <td><a href="">1</a></td>
-                            <td><a href="">دوره مقدماتی تا پیشرفته لاراول</a></td>
-                            <td>بخش بک اند پروژه</td>
-                            <td>12 دقیقه</td>
-                            <td>تایید شده</td>
-                            <td>همه</td>
+                            <td><a href="">{{ $lesson->id  }}</a></td>
+                            <td><a href="">{{ $lesson->periority  }}</a></td>
+                            <td>{{ $lesson->title  }}</td>
+                            <td>{{ $lesson->season->name  }}</td>
+                            <td>{{ $lesson->time }}</td>
+                            <td><a href="">@if($lesson->confirmation_status == 'accepted')
+                                        {{ "تایید شده" }}
+                                    @else
+                                        {{ "تایید نشده" }}
+                                    @endif</a></td>
+                            <td>
+                                @if($lesson->free == 1)
+                                    {{ "همه"  }}
+                                @else
+                                    {{ "شرکت کنندگان" }}
+                                @endif
+                            </td>
                             <td>
                                 <a href="" class="item-delete mlg-15" data-id="1" href="javascript: void(0)"
                                    title="حذف"></a>
@@ -60,50 +74,9 @@
                                 <a href="" class="item-edit " title="ویرایش"></a>
                             </td>
                         </tr>
+                        @endforeach
 
-                        <tr role="row" data-row-id="2">
-                            <td>
-                                <label class="ui-checkbox">
-                                    <input type="checkbox" class="sub-checkbox" data-id="2">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td><a href="">1</a></td>
-                            <td><a href="">دوره مقدماتی تا پیشرفته لاراول</a></td>
-                            <td>بخش بک اند پروژه</td>
-                            <td>12 دقیقه</td>
-                            <td>تایید شده</td>
-                            <td>همه</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" title="حذف"></a>
-                                <a href="" class="item-reject mlg-15" title="رد"></a>
-                                <a href="" class="item-lock mlg-15" title="قفل "></a>
-                                <a href="" class="item-confirm mlg-15" title="تایید"></a>
-                                <a href="" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
-                        <tr role="row" data-row-id="3">
-                            <td>
-                                <label class="ui-checkbox">
-                                    <input type="checkbox" class="sub-checkbox" data-id="3">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                            <td><a href="">1</a></td>
-                            <td><a href="">دوره مقدماتی تا پیشرفته لاراول</a></td>
-                            <td>بخش بک اند پروژه</td>
-                            <td>12 دقیقه</td>
-                            <td>تایید شده</td>
-                            <td>شرکت کنندگان</td>
-                            <td>
-                                <a href="" class="item-delete mlg-15" data-id="2" href="javascript: void(0)"
-                                   title="حذف"></a>
-                                <a href="" class="item-reject mlg-15" title="رد"></a>
-                                <a href="" class="item-lock mlg-15" title="قفل "></a>
-                                <a href="" class="item-confirm mlg-15" title="تایید"></a>
-                                <a href="" class="item-edit " title="ویرایش"></a>
-                            </td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -178,7 +151,13 @@
         alert('سرفصل جدید با موقفیت اضافه شد');
     </script>
     @break
+    @case('lesson.create')
+    <script>
+        alert('درس جدید با موقفیت اضافه شد');
+    </script>
+    @break
 
     @default
+    {{}}
     @break
 @endswitch

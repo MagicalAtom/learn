@@ -38,4 +38,10 @@ public function delete($id){
 }
 
 
+
+public function allSeasons($id){
+    return Season::query()->where('course_id',$id)->where('confirmation_status','accepted')->get();
+}
+
+
 }
